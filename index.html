@@ -1,0 +1,606 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#09080f">
+
+  <title>ETERNALS — Visual Discovery</title>
+  <meta name="description" content="Eternals is a personal visual discovery project focused on exploring images and visual inspiration.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #09080f;
+      --surface: #11101a;
+      --surface2: #171522;
+      --purple: #9670ff;
+      --purple2: #7044e8;
+      --text: #f5f2ff;
+      --muted: #9892a9;
+      --border: rgba(255,255,255,.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    nav {
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 2px;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #a78bfa, #6138d8);
+      border-radius: 12px;
+      font-size: 21px;
+      color: white;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .nav-button {
+      padding: 11px 18px;
+      background: rgba(150,112,255,.12);
+      border: 1px solid rgba(150,112,255,.3);
+      border-radius: 8px;
+      color: #c5b4ff !important;
+    }
+
+    .hero {
+      position: relative;
+      padding: 125px 0 115px;
+      text-align: center;
+    }
+
+    .glow {
+      position: absolute;
+      width: 550px;
+      height: 350px;
+      background: #7044e8;
+      opacity: .13;
+      filter: blur(130px);
+      border-radius: 50%;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid rgba(150,112,255,.25);
+      background: rgba(150,112,255,.08);
+      color: #c3afff;
+      border-radius: 30px;
+      padding: 9px 15px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #a78bfa;
+      box-shadow: 0 0 12px #a78bfa;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(48px, 8vw, 86px);
+      line-height: 1.08;
+      letter-spacing: -4px;
+      margin: 30px auto 22px;
+      max-width: 850px;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, #c4b5fd, #9067ff, #d2c3ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+      max-width: 590px;
+      margin: 0 auto;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 13px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 23px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, #9b7aff, #7044e8);
+      color: white;
+      box-shadow: 0 8px 35px rgba(112,68,232,.22);
+    }
+
+    .button-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(112,68,232,.35);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.025);
+      color: #ddd6ee;
+    }
+
+    .button-secondary:hover {
+      background: var(--surface2);
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-label {
+      color: var(--purple);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(30px, 5vw, 43px);
+      letter-spacing: -1.5px;
+      margin-bottom: 15px;
+    }
+
+    .section-description {
+      max-width: 570px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 45px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #151321, #100f17);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      transition: .25s;
+    }
+
+    .card:hover {
+      border-color: rgba(150,112,255,.4);
+      transform: translateY(-5px);
+    }
+
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 21px;
+      background: rgba(150,112,255,.12);
+      margin-bottom: 25px;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .about {
+      background: #0d0c14;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 65px;
+      align-items: center;
+    }
+
+    .about-panel {
+      background: linear-gradient(145deg, #1b1630, #11101a);
+      border: 1px solid rgba(150,112,255,.2);
+      padding: 38px;
+      border-radius: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-panel::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background: #7044e8;
+      filter: blur(100px);
+      opacity: .35;
+      right: -40px;
+      bottom: -50px;
+    }
+
+    .about-panel h3 {
+      position: relative;
+      z-index: 1;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .about-panel p {
+      position: relative;
+      z-index: 1;
+      color: #aaa2bb;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .privacy-section {
+      text-align: center;
+    }
+
+    .privacy-section .section-description {
+      margin: auto;
+    }
+
+    .privacy-link {
+      display: inline-block;
+      margin-top: 28px;
+      color: #bca9ff;
+      font-size: 13px;
+      border-bottom: 1px solid rgba(188,169,255,.4);
+      padding-bottom: 5px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 35px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: #777184;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 23px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    @media(max-width: 750px) {
+      .nav-links {
+        gap: 13px;
+        font-size: 11px;
+      }
+
+      .nav-button {
+        display: none;
+      }
+
+      .hero {
+        padding: 95px 0 85px;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+    }
+
+    @media(max-width: 420px) {
+      .nav-links a:first-child {
+        display: none;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <nav>
+      <a href="#" class="logo">
+        <span class="logo-icon">E</span>
+        ETERNALS
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="#contact" class="nav-button">Contact</a>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="glow"></div>
+
+      <div class="container hero-content">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          VISUAL DISCOVERY PROJECT
+        </div>
+
+        <h1>
+          Discover a world of
+          <span class="gradient">visual inspiration.</span>
+        </h1>
+
+        <p class="hero-description">
+          Eternals is a personal media discovery project
+          designed to explore visual content, discover creative
+          resources and organize image inspiration.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#about" class="button button-primary">
+            Discover Eternals →
+          </a>
+
+          <a href="privacy.html" class="button button-secondary">
+            Privacy policy
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="features">
+      <div class="container">
+        <div class="section-label">WHAT WE DO</div>
+
+        <h2 class="section-title">
+          A simpler way to explore visuals.
+        </h2>
+
+        <p class="section-description">
+          A personal project focused on discovering and organizing
+          visual references through supported platform integrations.
+        </p>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">⌕</div>
+            <h3>Image Discovery</h3>
+            <p>
+              Explore visual resources and discover images
+              that can serve as creative references.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">▧</div>
+            <h3>Visual Organization</h3>
+            <p>
+              Organize visual references and make image
+              exploration easier and more structured.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">◇</div>
+            <h3>Responsible Access</h3>
+            <p>
+              Designed around authorized integrations,
+              applicable permissions and platform policies.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-content">
+
+        <div>
+          <div class="section-label">ABOUT ETERNALS</div>
+
+          <h2 class="section-title">
+            Built for visual exploration.
+          </h2>
+
+          <p class="section-description">
+            Eternals is an independent personal project
+            developed to make visual discovery more organized.
+            Its purpose is to explore images and creative
+            references using supported data sources and
+            authorized API access.
+          </p>
+        </div>
+
+        <div class="about-panel">
+          <h3>Creativity without clutter.</h3>
+
+          <p>
+            Our goal is to keep visual exploration simple,
+            organized and transparent, while respecting
+            platform permissions and the rights of content
+            creators.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="privacy-section" id="contact">
+      <div class="container">
+        <div class="section-label">TRANSPARENCY</div>
+
+        <h2 class="section-title">
+          Your privacy matters.
+        </h2>
+
+        <p class="section-description">
+          Learn what information is involved when using
+          Eternals, how authorized access works and how
+          privacy is handled.
+        </p>
+
+        <a href="privacy.html" class="privacy-link">
+          Read our Privacy Policy →
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="logo">
+        <span class="logo-icon">E</span>
+        ETERNALS
+      </div>
+
+      <p class="footer-copy">
+        © <span id="year"></span> Eternals. Independent project.
+      </p>
+
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
